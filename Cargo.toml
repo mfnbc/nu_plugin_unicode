@@ -1,0 +1,28 @@
+[package]
+name = "nu_plugin_unicode"
+version = "0.1.0"
+edition = "2021"
+authors = ["TE2 Project"]
+description = "Unicode operations plugin for Nushell (chars, graphemes, normalization)"
+license = "MIT"
+repository = "https://github.com/yourusername/nu_plugin_unicode"
+
+[dependencies]
+nu-plugin = "0.110"
+nu-protocol = "0.110"
+
+# Industry-standard Unicode libraries
+unicode-segmentation = "1.10.1"
+unicode-normalization = "0.1.22"
+
+# Force the correct interprocess version
+interprocess = "=2.2.1"
+
+# SERDE is required for MsgPack serialization in 0.110
+serde = { version = "1.0", features = ["derive"] }
+rmp-serde = "1.1.2" # The MsgPack bridge used by Nushell
+
+[dev-dependencies]
+# For testing
+pretty_assertions = "1.4"
+
