@@ -130,16 +130,6 @@ chmod +x build_and_test.sh
 ./build_and_test.sh
 ```
 
-## Performance
-
-Benchmarked on Hebrew text (Genesis 1:1, 10 iterations):
-
-| Method | Time |
-|--------|------|
-| Nushell `encode utf-8 \| into int` | ~2.5ms |
-| Plugin `unicode chars` | ~0.08ms |
-| **Speedup** | **~30×** |
-
 ## License
 
-MIT
+LGPL
