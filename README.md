@@ -1,6 +1,8 @@
 # nu_plugin_unicode
 
-Unicode operations for Nushell: character segmentation, grapheme clusters, and normalization.
+Thin Nushell bindings for the Rust unicode crates: character segmentation, grapheme clusters, and normalization.
+
+This plugin is intentionally generic and parity-focused. It should stay close to the underlying Rust unicode behavior and avoid Hebrew-specific semantics.
 
 ## Features
 
@@ -61,25 +63,15 @@ plugin add ./target/release/nu_plugin_unicode
 
 ## Use in TE2 Pipeline
 
-Replace the hacky `encode utf-8 | into int` with:
+Use this plugin when TE2 needs direct Unicode primitives from Rust.
 
-```
-# OLD (broken for complex Unicode):
-def chars-with-codepoints [] {
-    $in | split chars | each {|ch| {ch: $ch, cp: ($ch | encode utf-8 | into int)}}
-}
-
-# NEW (Unicode-correct):
-def chars-with-codepoints [] {
-    $in | unicode chars
-}
-```
+The public surface should stay limited to `unicode chars`, `unicode graphemes`, and `unicode normalize`.
 
 ## Technical Details
 
 ### Dependencies
 
-- **unicode-segmentation 1.10**: Industry-standard grapheme clustering (used by ripgrep, bat, fd)
+- **unicode-segmentation 1.10**: Grapheme clustering
 - **unicode-normalization 0.1**: Standard Unicode normalization forms
 - **nu-plugin 0.89**: Nushell plugin framework
 - **nu-protocol 0.89**: Nushell value types

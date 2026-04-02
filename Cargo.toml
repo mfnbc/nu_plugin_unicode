@@ -8,15 +8,15 @@ license = "MIT"
 repository = "https://github.com/yourusername/nu_plugin_unicode"
 
 [dependencies]
-nu-plugin = "0.110"
-nu-protocol = "0.110"
+nu-plugin = "0.111.0"
+nu-protocol = "0.111.0"
 
 # Industry-standard Unicode libraries
 unicode-segmentation = "1.10.1"
 unicode-normalization = "0.1.22"
 
 # Force the correct interprocess version
-interprocess = "=2.2.1"
+interprocess = "^2.3.1"
 
 # SERDE is required for MsgPack serialization in 0.110
 serde = { version = "1.0", features = ["derive"] }
@@ -25,4 +25,3 @@ rmp-serde = "1.1.2" # The MsgPack bridge used by Nushell
 [dev-dependencies]
 # For testing
 pretty_assertions = "1.4"
-
